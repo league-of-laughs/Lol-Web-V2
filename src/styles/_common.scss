@@ -1,0 +1,35 @@
+@import './variables';
+body{
+  background: linear-gradient(110deg, #2A2A2E 33%, white 25%);
+  h1{
+    font-size: $headers;
+    font-family: $roboto;
+  }
+
+  h2, p{
+    font-family: $roboto;
+    font-size: $text;
+  }
+}
+
+.side{
+  h1, h2, p {
+    color: white;
+  }
+
+  button{
+    border-radius: 45px;
+    border: 3px solid white;
+    padding: 15px;
+    background: $sideColor;
+    color: white;
+    font-size: $text;
+  }
+}
+
+.main{
+  img{
+    height: 150px;
+    width: auto;
+  }
+}

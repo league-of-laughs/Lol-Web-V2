@@ -1,0 +1,30 @@
+@import "../../styles/mixins";
+@import '../../styles/common';
+@import '../../styles/variables';
+
+.startContainer{
+  @include flex(row, space-around);
+
+  .side{
+    @include heightWidth(100,30);
+    @include flex(column, center, center);
+  }
+
+  .main{
+    h1{
+      text-align: center;
+    }
+
+    @include heightWidth(100,70);
+    @include flex(column, space-around);
+
+    .top{
+      @include flex(row, space-around);
+    }
+
+    .playersDisplay{
+      @include flex(row, space-around);
+    }
+
+  }
+}

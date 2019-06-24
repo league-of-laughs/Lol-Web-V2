@@ -1,0 +1,11 @@
+@mixin flex($direction, $justify, $center: null){
+  display: flex;
+  flex-direction: $direction;
+  align-items: $center;
+  justify-content: $justify;
+}
+
+@mixin heightWidth($height,$width){
+  height: $height + unquote('vh');
+  width: $width + unquote('vw');
+}
