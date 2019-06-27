@@ -8,22 +8,34 @@
   .side{
     @include heightWidth(100,30);
     @include flex(column, center, center);
+
+    p{
+      margin-bottom: 2em;
+    }
   }
 
   .main{
+    img{
+      margin-left: 10em;
+    }
     h1{
+      margin-top: 2em;
+      margin-bottom: 2em;
       text-align: center;
+      font-size: 60px;
     }
 
     @include heightWidth(100,70);
-    @include flex(column, space-around);
+    @include flex(column, center);
 
     .top{
-      @include flex(row, space-around);
+      margin-left:4em;
+      @include flex(row, space-around, center);
     }
 
     .playersDisplay{
       @include flex(row, space-around);
+      margin-bottom:9em;
     }
 
   }
