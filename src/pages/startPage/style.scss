@@ -34,8 +34,13 @@
     }
 
     .playersDisplay{
-      @include flex(row, space-around);
+      @include flex(row, center);
+      flex-wrap: wrap;
       margin-bottom:9em;
+
+      p{
+        margin: 20px;
+      }
     }
 
   }
