@@ -1,4 +1,7 @@
 @import './variables';
+.container{
+  @include flex(row, space-around);
+}
 body{
   background: linear-gradient(110deg, #2A2A2E 33%, white 25%);
   h1,h2{
@@ -19,6 +22,8 @@ body{
 }
 
 .side{
+  @include flex(column, center, center);
+  @include heightWidth(100,30);
   h1, h2, p {
     color: white;
   }
@@ -34,6 +39,7 @@ body{
 }
 
 .main{
+  @include heightWidth(100,70);
   img{
     height: 200px;
     width: auto;

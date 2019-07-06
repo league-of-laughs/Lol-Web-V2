@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style.scss';
 import Logo from '../../assets/logo.png';
 import roomcode from '../../utils/roomcode';
@@ -26,17 +26,22 @@ class StartPage extends Component{
     socket.emit('web-newGame', roomCode);
   }
 
-  handlePress(){
-    //when click send appropiate socket response and route to new page
+  handlePress = () =>{
+    const { socket, history } = this.props;
+    const { roomCode } = this.state;
+    console.log(roomCode)
+
+    socket.emit('web-startGame', (roomCode));
+    history.push('/memePage');
   }
   render(){
     const { roomCode, players } = this.state;
     return(
-      <div className = "startContainer">
+      <div className = "container">
         <div className = "side">
           <h1>Room Code</h1>
           <p>{ roomCode }</p>
-          <button>Start</button>
+          <button onClick={ this.handlePress }>Start</button>
         </div>
         <div className = "main">
           <div className = "top">
