@@ -10,31 +10,19 @@
   }
 
   .main{
-    img{
-      margin-left: 10em;
-    }
+    @include flex(column, space-around, center);
     h1{
-      margin-top: 2em;
-      margin-bottom: 2em;
       text-align: center;
       font-size: 60px;
     }
 
-    @include flex(column, center);
-
     .top{
-      margin-left:4em;
-      @include flex(row, space-around, center);
+      width: 100%;
+      margin-left: 30%; 
+      @include flex(row, flex-start);
     }
-
-    .playersDisplay{
-      @include flex(row, center);
-      flex-wrap: wrap;
-      margin-bottom:9em;
-
-      p{
-        margin: 20px;
-      }
+    #spectators{
+      margin-bottom: 50%;
     }
   }
 }

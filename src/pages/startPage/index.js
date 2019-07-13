@@ -7,7 +7,7 @@ class StartPage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      players: [],
+      players: ['tommy','tommy','tommy','tommy'],
       roomCode: null
     }
     const { socket } = this.props;
@@ -45,10 +45,13 @@ class StartPage extends Component{
         </div>
         <div className = "main">
           <div className = "top">
+            <div>
             <h2>Spectators</h2>
-            <img src={ Logo }/>
+            <p style = {{textAlign:'center'}} >0</p>
+            </div>
+            <img id='logo' src={ Logo }/>
           </div>
-          <h1>Players</h1>
+          <h1 id="players">Players</h1>
           <div className = "playersDisplay">
             {players.map(player => {
               return <p>{ player }</p>

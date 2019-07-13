@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Logo from '../../assets/logo.png';
 import pickMeme from '../../utils/meme';
+import './style.scss';
 
 class MemePage extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-      meme: null
+      meme: null,
+      players: ['tommy','tommy','tommy','tommy']
     }
   }
 
@@ -17,7 +19,7 @@ class MemePage extends Component{
   }
 
   render(){
-    const { meme } = this.state;
+    const { meme, players } = this.state;
     return(
       <div className="container">
         <div className="side">
@@ -25,11 +27,14 @@ class MemePage extends Component{
           <p>Fill in the captions</p>
           <p>58</p>
         </div>
-        <div className="main">
-          <div className="top">
-            <img src={ Logo }/>
+        <div id="memePageMain" className="main">
+            <img id='logo' src={ Logo }/>
+          <img src={ meme } id="voteMeme"/>
+          <div className = "playersDisplay">
+            {players.map(player => {
+              return <p>{ player }</p>
+            })}
           </div>
-          <img src={ meme } id="memeImg"/>
         </div>
       </div>
     )

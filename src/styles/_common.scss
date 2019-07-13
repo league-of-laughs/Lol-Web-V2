@@ -40,8 +40,20 @@ body{
 
 .main{
   @include heightWidth(100,70);
-  img{
-    height: 200px;
+  #logo{
+    position: fixed;
+    height: 150px;
     width: auto;
+    right: 20px;
+    top: 10px;
+  }
+
+  .playersDisplay{
+    @include flex(row, center);
+    flex-wrap: wrap;
+
+    p{
+      margin: 20px;
+    }
   }
 }
