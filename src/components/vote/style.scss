@@ -1,0 +1,14 @@
+@import "../../styles/mixins";
+
+.voteComponent{
+  @include flex(row, center, center);
+
+  h1{
+    margin-left: 10%;
+  }
+
+  img{
+    height: 40vh;
+    max-width: 80%;
+  }
+}
