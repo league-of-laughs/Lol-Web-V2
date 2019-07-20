@@ -29,7 +29,6 @@ class StartPage extends Component{
   handlePress = () =>{
     const { socket, history } = this.props;
     const { roomCode } = this.state;
-    console.log(roomCode)
 
     socket.emit('web-startGame', (roomCode));
     history.push('/memePage');
