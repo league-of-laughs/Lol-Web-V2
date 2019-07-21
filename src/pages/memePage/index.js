@@ -9,8 +9,16 @@ class MemePage extends Component{
 
     this.state = {
       meme: null,
-      players: ['tommy','tommy','tommy','tommy']
     }
+    const { socket, history } = this.props;
+
+    socket.on('all-doneUploading', () => {
+      history.push('/votePage')
+    })
+
+    socket.on('web-playerUploadedMeme', (name) => {
+      //show player as uploaded
+    })
   }
 
   componentDidMount(){
@@ -19,7 +27,8 @@ class MemePage extends Component{
   }
 
   render(){
-    const { meme, players } = this.state;
+    const { meme } = this.state;
+    const { players } = this.props;
     return(
       <div className="container">
         <div className="side">

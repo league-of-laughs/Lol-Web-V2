@@ -7,15 +7,13 @@ class StartPage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      players: ['tommy','tommy','tommy','tommy'],
       roomCode: null
     }
     const { socket } = this.props;
 
     socket.on('web-displayAddedPlayer', (name) => {
-      const { players } = this.state;
-      players.push(name);
-      this.setState({ players });
+      const { onPlayerChange } = this.props;
+      onPlayerChange(name);
     })
   }
 
@@ -34,7 +32,8 @@ class StartPage extends Component{
     history.push('/memePage');
   }
   render(){
-    const { roomCode, players } = this.state;
+    const { roomCode } = this.state;
+    const { players } = this.props;
     return(
       <div className = "container">
         <div className = "side">
