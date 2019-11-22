@@ -1,0 +1,12 @@
+@import '../../styles/common';
+@import '../../styles/variables';
+
+.header{
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: $sideColor;
+  width: 100%;
+}

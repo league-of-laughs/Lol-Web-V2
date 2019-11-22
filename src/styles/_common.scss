@@ -1,9 +1,25 @@
 @import './variables';
+@import './mixins';
+
 .container{
+  background: linear-gradient(110deg, #2A2A2E 33%, white 25%);
+
   @include flex(row, space-around);
 }
+
+.header {
+  img{
+    height: 200px;
+    width: auto;
+  }
+}
+
+.containerPlayer{
+  height: 70vh;
+  @include flex(column, space-around, center);
+}
 body{
-  background: linear-gradient(110deg, #2A2A2E 33%, white 25%);
+  
   h1,h2{
     font-size: $headers;
     font-family: 'Courier New', Courier, monospace
@@ -19,6 +35,10 @@ body{
   p{
     font-size: $text;
   }
+
+  @media only screen and (max-width: 1200px){
+    background: none;
+  }
 }
 
 .side{
@@ -27,15 +47,27 @@ body{
   h1, h2, p {
     color: white;
   }
+}
 
-  button{
-    border-radius: 45px;
-    border: 3px solid white;
-    padding: 15px;
-    background: $sideColor;
-    color: white;
-    font-size: $text;
-  }
+button{
+  border-radius: 45px;
+  border: 3px solid white;
+  padding: 15px;
+  background: $sideColor;
+  color: white;
+  font-size: $text;
+}
+
+input{
+  border-style: solid;
+  border-color: white;
+  border-bottom-color: grey;
+  border-bottom-width: 2;
+  border-radius: 3;
+  text-align: left;
+  width: 70%;
+  height: 40px;
+  font-size: 20px;
 }
 
 .main{
