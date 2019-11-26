@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import Logo from '../../assets/logo.png'
 
-class JoinGame extends Component{
+class CaptionPage extends Component{
   constructor(props){
     super(props);
   }
@@ -10,7 +10,7 @@ class JoinGame extends Component{
   handleClick = () => {
     const { history } = this.props;
 
-    history.push('/captionPage');
+    history.push('/playerVotePage');
   }
 
   render(){
@@ -18,15 +18,16 @@ class JoinGame extends Component{
       <div>
         <div className='header'>
           <img src={ Logo }/>
+          <h2>Fill out the meme</h2>
         </div>
         <div className='containerPlayer'>
-          <input placeholder='Room Code'/>
-          <input placeholder='Name'/>
-          <button onClick={this.handleClick}>Join Game</button>
+          <input placeholder='Top Caption'/>
+          <input placeholder='Bottom Caption'/>
+          <button onClick={this.handleClick}>Submit</button>
         </div>
       </div>
     )
   }
 }
 
-export default JoinGame;
+export default CaptionPage;
