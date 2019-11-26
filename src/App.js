@@ -11,6 +11,7 @@ import MainPage from './pages/mainPage';
 import JoinGame from './pages/joinGame';
 import CaptionPage from './pages/captionPage';
 import PlayerVotePage from './pages/playerVotePage';
+import PlayerWinnerPage from './pages/playerWinnerPage';
 
 const SERVER_URL = 'http://localhost:3000';
 const socket = io.connect(SERVER_URL);
@@ -40,6 +41,7 @@ class App extends Component{
           <Route exact path = '/joinGame' render = {(routeProps) => <JoinGame {...routeProps} socket = {socket} players={ players }/>} />
           <Route exact path = '/captionPage' render = {(routeProps) => <CaptionPage {...routeProps} socket = {socket} players={ players }/>} />
           <Route exact path = '/playerVotePage' render = {(routeProps) => <PlayerVotePage {...routeProps} socket = {socket} players={ players }/>} />
+          <Route exact path = '/playerWinnerPage' render = {(routeProps) => <PlayerWinnerPage {...routeProps} socket = {socket} players={ players }/>} />
           <Route exact path = '/memePage' render = {(routeProps) => <MemePage {...routeProps} socket = {socket} players={ players }/>} />
           <Route exact path = '/votePage' render = {(routeProps) => <VotePage {...routeProps} socket = {socket} players={ players }/>} />
           <Route exact path = '/winnerPage' render = {(routeProps) => <WinnerPage {...routeProps} socket = {socket} players={ players }/>} />

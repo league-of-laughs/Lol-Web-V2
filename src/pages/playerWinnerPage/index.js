@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import Logo from '../../assets/logo.png'
 
-class PlayerVotePage extends Component{
+class PlayerWinnerPage extends Component{
   constructor(props){
     super(props);
   }
@@ -10,7 +10,7 @@ class PlayerVotePage extends Component{
   handleClick = () => {
     const { history } = this.props;
 
-    history.push('/playerWinnerPage');
+    history.push('/joinGame');
   }
 
   render(){
@@ -18,15 +18,18 @@ class PlayerVotePage extends Component{
       <div>
         <div className='header'>
           <img src={ Logo }/>
-          <h2>Vote</h2>
+          <h2></h2>
         </div>
         <div className='containerPlayer'>
-          <button onClick={this.handleClick}>1</button>
-          <button onClick={this.handleClick}>2</button>
+          <div>
+            <h1>Winner!</h1>
+            <p style={{textAlign: 'center'}}>Tommy</p>
+          </div>
+          <button onClick={ this.handleClick }>Join New Game</button>
         </div>
       </div>
     );
   }
 }
 
-export default PlayerVotePage;
+export default PlayerWinnerPage;
