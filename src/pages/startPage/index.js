@@ -6,12 +6,13 @@ import roomcode from '../../utils/roomcode';
 class StartPage extends Component{
   constructor(props){
     super(props);
+    
     this.state = {
-      roomCode: null
+      room: null
     }
     const { socket } = this.props;
 
-    socket.on('web-displayAddedPlayer', (name) => {
+    socket.on('host-displayAddedPlayer', (name) => {
       const { onPlayerChange } = this.props;
       onPlayerChange(name);
     })
@@ -19,26 +20,26 @@ class StartPage extends Component{
 
   componentDidMount(){
     const { socket } = this.props;
-    const roomCode = roomcode();
-    this.setState({ roomCode })
-    socket.emit('web-newGame', roomCode);
+    const room = roomcode();
+    this.setState({ room })
+    socket.emit('host-newGame', room);
   }
 
   handlePress = () =>{
     const { socket, history } = this.props;
-    const { roomCode } = this.state;
+    const { room } = this.state;
 
-    socket.emit('web-startGame', (roomCode));
+    socket.emit('host-startGame', (room));
     history.push('/memePage');
   }
   render(){
-    const { roomCode } = this.state;
+    const { room } = this.state;
     const { players } = this.props;
     return(
       <div className = "container">
         <div className = "side">
           <h1>Room Code</h1>
-          <p>{ roomCode }</p>
+          <p>{ room }</p>
           <button onClick={ this.handlePress }>Start</button>
         </div>
         <div className = "main">
