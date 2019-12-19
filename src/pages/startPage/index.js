@@ -21,7 +21,7 @@ class StartPage extends Component{
   componentDidMount(){
     const { socket } = this.props;
     const room = roomcode();
-    this.setState({ room })
+    this.setState({ room });
     socket.emit('host-newGame', room);
   }
 
@@ -46,15 +46,15 @@ class StartPage extends Component{
           <div className = "top">
             <div>
             <h2>Spectators</h2>
-            <p style = {{textAlign:'center'}} >0</p>
+            <p style = {{ textAlign:'center' }} >0</p>
             </div>
             <img id='logo' src={ Logo }/>
           </div>
           <h1 id="players">Players</h1>
           <div className = "playersDisplay">
-            {players.map(player => {
+            { players.map(player => {
               return <p>{ player }</p>
-            })}
+            }) }
           </div>
         </div>
       </div>

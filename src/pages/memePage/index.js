@@ -13,8 +13,15 @@ class MemePage extends Component{
     const { socket, history } = this.props;
 
     socket.on('all-doneUploading', () => {
+      const room = localStorage.getItem('room');
+
+      socket.emit('host-setPlayerNumbers', room);
+    });
+
+    socket.on('client-startVoting', (game) => {
+      localStorage.setItem('game', JSON.stringify(game));
       history.push('/votePage')
-    })
+    });
 
     socket.on('web-playerUploadedMeme', (name) => {
       //show player as uploaded

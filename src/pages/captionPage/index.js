@@ -11,6 +11,12 @@ class CaptionPage extends Component{
       top: null,
       bottom: null
     }
+
+    const { socket, history } = this.props;
+
+    socket.on('all-doneUploading', () => {
+      history.push('/playerVotePage');
+    })
   }
 
   handleClick = () => {
@@ -25,7 +31,6 @@ class CaptionPage extends Component{
     socket.emit('client-uploadMeme', { room, data });
 
     this.setState({ waiting: true });
-    //history.push('/playerVotePage');
   }
 
   handleChange = (event) => {

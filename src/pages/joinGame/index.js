@@ -20,7 +20,7 @@ class JoinGame extends Component{
 
     socket.on('client-start', () => {
       history.push('/captionPage')
-    })
+    });
   }
 
   handleClick = () => {
@@ -31,7 +31,7 @@ class JoinGame extends Component{
       alert('fill out the forms')
       return;
     }
-    console.log(this.state)
+
     socket.emit('client-addPlayer', { room, name });
   }
 
