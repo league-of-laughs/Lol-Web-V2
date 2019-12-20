@@ -17,14 +17,14 @@ class PlayerVotePage extends Component{
     });
 
     socket.on('game-over', (winner) => {
-      localStorage.setItem('winner', winner);
+      sessionStorage.setItem('winner', winner);
       history.push('/winnerPage');
     })
   }
 
   vote = (choice) => {
     const { socket } = this.props;
-    const room = localStorage.getItem('room');
+    const room = sessionStorage.getItem('room');
 
     const data = { choice, room };
 

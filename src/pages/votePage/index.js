@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import Logo from '../../assets/logo.png';
 import Vote from '../../components/vote';
+import MemeDisplay from '../../components/memeDisplay';
 import './style.scss';
 
 class VotePage extends Component{
@@ -8,14 +9,15 @@ class VotePage extends Component{
     super(props);
     this.state = {
       winner: null,
-      playerOne: null,
-      playerTwo: null
+      playerVotingOne: null,
+      playerVotingTwo: null,
+      meme: null,
     }
 
     const { socket, history } = this.props;
 
     socket.on('game-over', (winner) => {
-      localStorage.setItem('winner', winner);
+      sessionStorage.setItem('winner', winner);
       history.push('/winnerPage');
     });
 
@@ -25,15 +27,22 @@ class VotePage extends Component{
   }
 
   componentDidMount(){
-    const game = JSON.parse(localStorage.getItem('game'));
+    const game = JSON.parse(sessionStorage.getItem('game'));
+    const meme = sessionStorage.getItem('meme');
+    console.log('this is game')
     console.log(game)
+
+    const { playerVotingOne, playerVotingTwo } = game;
+    this.setState({ playerVotingOne, playerVotingTwo, meme });
   }
 
   render(){
-    const { playerOne, playerTwo } = this.state;
+    const { playerVotingOne = {}, playerVotingTwo = {}, meme } = this.state;
+    // const { currentMeme: meme1 } = playerVotingOne;
+    // const { currentMeme: meme2 } = playerVotingTwo;
 
     return(
-      playerOne && playerTwo ?
+      playerVotingOne && playerVotingTwo ?
       <div>
         <div className="container">
         <div className="side">
@@ -41,11 +50,12 @@ class VotePage extends Component{
           <p>Vote</p>
           <p>58</p>
         </div>
-        <div id="voteMain" className="main">
+        <div className="main">
             <img id='logo' src={ Logo }/>
-            <Vote />
+            <MemeDisplay url = { meme } data = { playerVotingOne } number = '1'/>
             <h1 id='versus'>VS</h1>
-            <Vote />
+            <MemeDisplay url = { meme } data = { playerVotingTwo } number = '2' />
+            {/* <Vote /> */}
         </div>
       </div>
       </div>

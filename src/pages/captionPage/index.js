@@ -23,8 +23,8 @@ class CaptionPage extends Component{
     const { history, socket } = this.props;
 
     const { top, bottom } = this.state;
-    const name = localStorage.getItem('name');
-    const room = localStorage.getItem('room');
+    const name = sessionStorage.getItem('name');
+    const room = sessionStorage.getItem('room');
 
     const data = { name, top, bottom }
 

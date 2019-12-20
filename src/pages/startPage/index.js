@@ -23,6 +23,7 @@ class StartPage extends Component{
     const room = roomcode();
     this.setState({ room });
     socket.emit('host-newGame', room);
+    sessionStorage.setItem('room', room);
   }
 
   handlePress = () =>{

@@ -2,13 +2,11 @@
 @import '../../styles/common';
 @import '../../styles/variables';
 
-#voteMain{
-  @include flex(column, center, center);
+  // @include flex(column, center center);
 
   #versus{
     text-align: center;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    margin-right:8%; 
+    //margin-bottom: 10px;
+    //margin-top: -150px;
+    
   }
-}

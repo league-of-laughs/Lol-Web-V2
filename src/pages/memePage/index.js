@@ -13,13 +13,13 @@ class MemePage extends Component{
     const { socket, history } = this.props;
 
     socket.on('all-doneUploading', () => {
-      const room = localStorage.getItem('room');
+      const room = sessionStorage.getItem('room');
 
       socket.emit('host-setPlayerNumbers', room);
     });
 
     socket.on('client-startVoting', (game) => {
-      localStorage.setItem('game', JSON.stringify(game));
+      sessionStorage.setItem('game', JSON.stringify(game));
       history.push('/votePage')
     });
 
@@ -31,6 +31,7 @@ class MemePage extends Component{
   componentDidMount(){
     const meme = pickMeme();
     this.setState({ meme });
+    sessionStorage.setItem('meme', meme);
   }
 
   render(){

@@ -43,8 +43,8 @@ class JoinGame extends Component{
   
   joinGame = () => {
     const { name, room } = this.state;
-    localStorage.setItem('room', room);
-    localStorage.setItem('name', name);
+    sessionStorage.setItem('room', room);
+    sessionStorage.setItem('name', name);
     this.setState({ waiting: true });
   }
 
