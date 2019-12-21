@@ -21,8 +21,17 @@ class VotePage extends Component{
       history.push('/winnerPage');
     });
 
+    socket.on('client-startVoting', (game) => {
+      const { playerVotingOne, playerVotingTwo } = game;
+      this.setState({ playerVotingOne, playerVotingTwo });
+    })
+
     socket.on('voting-done', (winner) => {
+      const room = sessionStorage.getItem('room');
       this.setState({ winner });
+      //timeout
+      socket.emit('host-setPlayerNumbers', room);
+
     });
   }
 

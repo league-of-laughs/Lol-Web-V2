@@ -5,6 +5,10 @@ import Logo from '../../assets/logo.png'
 class PlayerWinnerPage extends Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      winner: null
+    }
   }
 
   handleClick = () => {
@@ -13,7 +17,15 @@ class PlayerWinnerPage extends Component{
     history.push('/joinGame');
   }
 
+  componentDidMount(){
+    const winner = sessionStorage.getItem('winner');
+
+    this.setState({ winner });
+  }
+
   render(){
+    const { winner } = this.state;
+
     return(
       <div>
         <div className='header'>
@@ -23,7 +35,7 @@ class PlayerWinnerPage extends Component{
         <div className='containerPlayer'>
           <div>
             <h1>Winner!</h1>
-            <p style={{textAlign: 'center'}}>Tommy</p>
+            <p style={{textAlign: 'center'}}>{winner}</p>
           </div>
           <button onClick={ this.handleClick }>Join New Game</button>
         </div>
