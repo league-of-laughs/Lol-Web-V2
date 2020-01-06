@@ -17,7 +17,7 @@ class VotePage extends Component{
     const { socket, history } = this.props;
 
     socket.on('game-over', (winner) => {
-      sessionStorage.setItem('winner', winner);
+      sessionStorage.setItem('winner', JSON.stringify(winner));
       history.push('/winnerPage');
     });
 

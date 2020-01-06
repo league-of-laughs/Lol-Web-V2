@@ -9,6 +9,8 @@ class MemePage extends Component{
 
     this.state = {
       meme: null,
+      seconds: 60,
+      done: false
     }
     const { socket, history } = this.props;
 
@@ -32,17 +34,34 @@ class MemePage extends Component{
     const meme = pickMeme();
     this.setState({ meme });
     sessionStorage.setItem('meme', meme);
+    this.timer = setInterval(() => {
+      this.countDown();
+    }, 1000);
+  }
+
+  countDown = () => {
+    let { seconds, done } = this.state;
+    const { socket, history } = this.props;
+    if(seconds > 0){
+      this.setState({ seconds: seconds - 1 });
+    }
+    else if (!done){
+      const room = sessionStorage.getItem('room');
+      socket.emit('host-setPlayerNumbers', room);
+      this.setState({ done: true });
+    }
   }
 
   render(){
-    const { meme } = this.state;
+    let { meme, seconds } = this.state;
     const { players } = this.props;
+
     return(
       <div className="container">
         <div className="side">
           <h1>Current Meme</h1>
           <p>Fill in the captions</p>
-          <p>58</p>
+          <p>{ seconds }</p>
         </div>
         <div id="memePageMain" className="main">
             <img id='logo' src={ Logo }/>
