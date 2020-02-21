@@ -12,6 +12,8 @@ class VotePage extends Component{
       playerVotingOne: null,
       playerVotingTwo: null,
       meme: null,
+      seconds: 60,
+      done: false
     }
 
     const { socket, history } = this.props;
@@ -38,17 +40,28 @@ class VotePage extends Component{
   componentDidMount(){
     const game = JSON.parse(sessionStorage.getItem('game'));
     const meme = sessionStorage.getItem('meme');
-    console.log('this is game')
-    console.log(game)
-
     const { playerVotingOne, playerVotingTwo } = game;
     this.setState({ playerVotingOne, playerVotingTwo, meme });
+    this.timer = setInterval(() => {
+      this.countDown();
+    }, 1000);
+  }
+
+  countDown = () => {
+    let { seconds, done } = this.state;
+    const { socket, history } = this.props;
+    if(seconds > 0){
+      this.setState({ seconds: seconds - 1 });
+    }
+    else if (!done){
+      const room = sessionStorage.getItem('room');
+      socket.emit('host-setPlayerNumbers', room);
+      this.setState({ done: true });
+    }
   }
 
   render(){
-    const { playerVotingOne = {}, playerVotingTwo = {}, meme } = this.state;
-    // const { currentMeme: meme1 } = playerVotingOne;
-    // const { currentMeme: meme2 } = playerVotingTwo;
+    const { playerVotingOne = {}, playerVotingTwo = {}, meme, seconds } = this.state;
 
     return(
       playerVotingOne && playerVotingTwo ?
@@ -57,7 +70,7 @@ class VotePage extends Component{
         <div className="side">
           <h1>Face off</h1>
           <p>Vote</p>
-          <p>58</p>
+          <p>{ seconds }</p>
         </div>
         <div className="main">
             <img id='logo' src={ Logo }/>

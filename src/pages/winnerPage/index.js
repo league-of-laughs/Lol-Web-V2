@@ -7,7 +7,7 @@ class WinnerPage extends Component{
     super(props);
 
     this.state = {
-      winner: null,
+      winner: {} ,
       meme: null
     }
   }
@@ -28,15 +28,16 @@ class WinnerPage extends Component{
 
   render(){
     const { winner, meme } = this.state;
+    const { name } = winner;
 
 
     return(
-      winner ? 
+      meme ? 
       <div>
         <div className="container">
         <div className="side">
           <h1>Winner!</h1>
-          <p>Tommy</p>
+          <p>{ name }</p>
           <button onClick={ this.handlePress }>Restart</button>
         </div>
         <div className="main">

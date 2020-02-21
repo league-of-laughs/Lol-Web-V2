@@ -6,19 +6,19 @@ class PlayerVotePage extends Component{
   constructor(props){
     super(props);
 
-    const { socket, history } = this.props;
-
     this.state = {
       waiting: false
     }
+
+    const { socket, history } = this.props;
 
     socket.on('client-startVoting', () => {
       this.setState({ waiting: false });
     });
 
     socket.on('game-over', (winner) => {
-      sessionStorage.setItem('winner', winner);
-      history.push('/winnerPage');
+      sessionStorage.setItem('winner', JSON.stringify(winner));
+      history.push('/playerWinnerPage');
     })
   }
 

@@ -48,6 +48,7 @@ class MemePage extends Component{
     else if (!done){
       const room = sessionStorage.getItem('room');
       socket.emit('host-setPlayerNumbers', room);
+      socket.emit('host-caption_timout', room);
       this.setState({ done: true });
     }
   }

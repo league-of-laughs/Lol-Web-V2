@@ -7,7 +7,7 @@ class PlayerWinnerPage extends Component{
     super(props);
 
     this.state = {
-      winner: null
+      winner: {}
     }
   }
 
@@ -17,15 +17,17 @@ class PlayerWinnerPage extends Component{
     history.push('/joinGame');
   }
 
-  componentDidMount(){
-    const winner = sessionStorage.getItem('winner');
+  async componentDidMount(){
+    console.log('this is winner');
+    const winner = await JSON.parse(sessionStorage.getItem('winner'));
+    console.log(winner)
 
     this.setState({ winner });
   }
 
   render(){
     const { winner } = this.state;
-
+    const { name } = winner;
     return(
       <div>
         <div className='header'>
@@ -35,7 +37,7 @@ class PlayerWinnerPage extends Component{
         <div className='containerPlayer'>
           <div>
             <h1>Winner!</h1>
-            <p style={{textAlign: 'center'}}>{winner}</p>
+            <p style={{textAlign: 'center'}}>{ name }</p>
           </div>
           <button onClick={ this.handleClick }>Join New Game</button>
         </div>

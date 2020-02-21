@@ -14,7 +14,7 @@ class CaptionPage extends Component{
 
     const { socket, history } = this.props;
 
-    socket.on('all-doneUploading', () => {
+    socket.on('client-startVoting', () => {
       history.push('/playerVotePage');
     })
   }
