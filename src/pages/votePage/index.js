@@ -33,6 +33,7 @@ class VotePage extends Component{
       this.setState({ winner });
       //timeout
       socket.emit('host-setPlayerNumbers', room);
+      this.setState({ seconds: 60 });
 
     });
   }
@@ -55,7 +56,7 @@ class VotePage extends Component{
     }
     else if (!done){
       const room = sessionStorage.getItem('room');
-      socket.emit('host-setPlayerNumbers', room);
+      socket.emit('host-vote_timeout', room);
       this.setState({ done: true });
     }
   }
